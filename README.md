@@ -36,7 +36,9 @@ You need the original CD-ROM ISOs in any supported language. They are available 
 | Language | Cars | Boats |
 |----------|------|-------|
 | 🇳🇱 Dutch | [Miel Monteur bouwt auto's](https://archive.org/details/1.mielmonteurbouwtautosiso) | [Miel Monteur recht door zee](https://archive.org/details/2.mielmonteurrechtdoorzee) |
+| 🇩🇪 German | [Autos bauen mit Willy Werkel](https://archive.org/details/autos-bauen-mit-willy-werkel) | [Schiffe bauen mit Willy Werkel](https://archive.org/details/schiffe_bauen_willy_werkel) |
 | 🇸🇪 Swedish | [Bygg bilar med Mulle Meck](https://archive.org/details/byggbilarmedmullemeck) | [Mulle Meck bygger båtar](https://archive.org/details/mullemeckbyggerbatar) |
+| 🇬🇧 English | [Gary Gadget: Building Cars](https://archive.org/details/gary-gadget-building-cars) | — |
 | 🇳🇴 Norwegian | [Bygg biler med Mulle Mekk](https://archive.org/details/bygg-biler-med-mulle-mekk) | — |
 | 🇩🇰 Danish | [Byg bil med Mulle Meck](https://archive.org/details/byg-bil-med-mulle-meck) | — |
 
@@ -49,7 +51,7 @@ The easiest way to run is with Docker:
 mkdir -p iso
 # (or use the build script: python3 build_scripts/build.py nl download)
 
-# Build and run (set GAME_LANG to your language: nl, sv, no, da)
+# Build and run (set GAME_LANG to your language: nl, de, sv, en, no, da)
 docker build -f Dockerfile.boten --build-arg GAME_LANG=nl -t mielboten .
 docker run -p 8082:80 mielboten
 ```
@@ -133,4 +135,4 @@ This is a fan project for preservation purposes.
 
 ## License
 
-This project is for educational and preservation purposes only. All original game assets remain the property of their respective copyright holders.
+This project is licensed under [GPL-3.0](LICENSE), the same license as the [original mulle.js](https://github.com/MrBrax/mulle.js) by MrBrax. All original game assets remain the property of their respective copyright holders.

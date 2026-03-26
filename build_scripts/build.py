@@ -214,16 +214,17 @@ class Build:
         subprocess.run([sys.executable, rename_script, self.extract_folder]).check_returncode()
 
     def download_game(self, show_progress=True):
-        if self.language == 'no':
-            url = 'https://archive.org/download/bygg-biler-med-mulle-mekk/Bygg%20biler%20med%20Mulle%20Mekk.iso'
-        elif self.language == 'sv':
-            url = 'https://archive.org/download/byggbilarmedmullemeck/byggbilarmedmullemeck.iso'
-        elif self.language == 'da':
-            url = 'https://archive.org/download/byg-bil-med-mulle-meck/Byg-bil-med-Mulle-Meck.iso'
-        elif self.language == 'nl':
-            url = 'https://archive.org/download/1.mielmonteurbouwtautosiso/1.Miel%20Monteur%20Bouwt%20Auto%27s%20ISO.iso'
-        else:
-            raise AttributeError('Invalid language')
+        cars_urls = {
+            'sv': 'https://archive.org/download/byggbilarmedmullemeck/byggbilarmedmullemeck.iso',
+            'nl': 'https://archive.org/download/1.mielmonteurbouwtautosiso/1.Miel%20Monteur%20Bouwt%20Auto%27s%20ISO.iso',
+            'de': 'https://archive.org/download/autos-bauen-mit-willy-werkel/Autos%20bauen%20mit%20Willy%20Werkel.iso',
+            'en': 'https://archive.org/download/gary-gadget-building-cars/Gary%20Gadget%20Building%20Cars.iso',
+            'no': 'https://archive.org/download/bygg-biler-med-mulle-mekk/Bygg%20biler%20med%20Mulle%20Mekk.iso',
+            'da': 'https://archive.org/download/byg-bil-med-mulle-meck/Byg-bil-med-Mulle-Meck.iso',
+        }
+        if self.language not in cars_urls:
+            raise AttributeError(f'Invalid language: {self.language}. Supported: {", ".join(cars_urls.keys())}')
+        url = cars_urls[self.language]
 
         if not os.path.exists(self.iso_folder):
             os.mkdir(self.iso_folder)
@@ -237,14 +238,17 @@ class Build:
 
     def download_boats_game(self, show_progress=True):
         """Download the Mulle Meck Boats game ISO (Recht Door Zee / bygger båtar)"""
-        if self.language == 'nl':
-            url = 'https://archive.org/download/2.mielmonteurrechtdoorzee/2.Miel%20Monteur%20Recht%20Door%20Zee.iso'
-        elif self.language == 'sv':
-            url = 'https://archive.org/download/mullemeckbyggerbatar/MulleMeckByggerBatar.iso'
+        boats_urls = {
+            'sv': 'https://archive.org/download/mullemeckbyggerbatar/MulleMeckByggerBatar.iso',
+            'nl': 'https://archive.org/download/2.mielmonteurrechtdoorzee/2.Miel%20Monteur%20Recht%20Door%20Zee.iso',
+            'de': 'https://archive.org/download/schiffe_bauen_willy_werkel/Schiffe%20bauen%20mit%20Willy%20Werkel.iso',
+        }
+        if self.language in boats_urls:
+            url = boats_urls[self.language]
         else:
-            # Default to Swedish if no boats version exists for the language
-            print(f'Warning: No boats game for language {self.language}, using Swedish')
-            url = 'https://archive.org/download/mullemeckbyggerbatar/MulleMeckByggerBatar.iso'
+            # Fall back to Swedish for languages without a boats release
+            print(f'Note: No boats game for language {self.language}, using Swedish')
+            url = boats_urls['sv']
 
         if not os.path.exists(self.iso_folder):
             os.mkdir(self.iso_folder)
