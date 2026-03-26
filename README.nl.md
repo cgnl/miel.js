@@ -1,5 +1,7 @@
 # mulle.js 🚗⛵
 
+> ⚠️ **Alpha** — Dit project is experimenteel. Verwacht bugs, ontbrekende assets en onvoltooide features.
+
 Een JavaScript/Phaser remake van de klassieke **Miel Monteur** (Mulle Meck) spellen, waarin beide spellen worden samengevoegd tot één ervaring.
 
 ## Wat is dit?

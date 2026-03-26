@@ -1,5 +1,7 @@
 # mulle.js 🚗⛵
 
+> ⚠️ **Alpha** — This project is experimental. Expect bugs, missing assets, and incomplete features.
+
 🇳🇱 [Nederlandse versie](README.nl.md)
 
 A JavaScript/Phaser remake of the classic **Miel Monteur** (Mulle Meck) games, combining both the Cars and Boats games into one unified experience.
