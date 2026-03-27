@@ -57,7 +57,9 @@ class MulleMapObject extends MulleSprite {
 
     // this.FrameList = [];
 
-    this.def = this.game.mulle.ObjectsDB[this.id] ||
+    // Use pre-resolved def if passed (seaworld passes _objectDef to avoid car/boat ID collision)
+    this.def = (opt && opt._objectDef) ||
+      this.game.mulle.ObjectsDB[this.id] ||
       (this.game.mulle.BoatObjectsDB ? this.game.mulle.BoatObjectsDB[this.id] : null)
 
     // Fix #54: Guard against missing ObjectsDB entries (sea-specific object types
