@@ -448,7 +448,7 @@ class MulleGame extends Phaser.Game {
         }
       }
 
-      console.error('sound not found', id, this.game.mulle.audio)
+      console.debug('sound not found', id)
 
       return false
     }
@@ -498,7 +498,7 @@ class MulleGame extends Phaser.Game {
         }
       }
 
-      console.error('sound not found', id)
+      console.debug('sound not found', id)
 
       return false
     }
